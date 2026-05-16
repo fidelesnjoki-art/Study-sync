@@ -41,17 +41,14 @@ export default function AdminDashboard() {
           <h2>All Tasks</h2>
         </div>
         <div className="task-list">
-        {tasks.map((task) => (
-          <div className="task-card"
-            key={task.id}
-          >
-            <p><b>Task:</b> {task.title || task.task}</p>
-            <p><b>User:</b> {task.userEmail || "unknown"}</p>
-            <button className="button" onClick={() => handleDelete(task.id)}>
-              Delete
-            </button>
-          </div>
-        ))}
+        {tasks.map((task) => ( <div className="task-card" key={task.id}
+         >
+        <p><b>Task:</b> {task.title || task.task}</p>
+        <p><b>User:</b> {task.userEmail || "unknown"}</p>
+        <button className="button" onClick={() => handleDelete(task.id)}>
+         Delete </button>
+      </div>
+     ))}
       </div>
     </div>
     </div>
