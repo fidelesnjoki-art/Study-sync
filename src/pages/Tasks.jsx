@@ -112,45 +112,21 @@ export default function Tasks() {
          ? "line-through"
           : "none",
            }}
-        >
+     >
           {task.task}
        </h3>
+       <p>Status:{" "} {task.completed ? "Completed "  : "Pending "} </p>
+       <button className="primary-btn" onClick={() => toggleComplete(
+        task.id, task.completed )}
+     >
+        {task.completed ? "Undo" : "Mark Complete"} </button>
 
-              <p>
-                Status:{" "}
-                {task.completed
-                  ? "Completed ✅"
-                  : "Pending ⏳"}
-              </p>
-
-              <button
-                className="primary-btn"
-                onClick={() =>
-                  toggleComplete(
-                    task.id,
-                    task.completed
-                  )
-                }
-              >
-                {task.completed
-                  ? "Undo"
-                  : "Mark Complete"}
-              </button>
-
-              <button
-                style={{
-                  background: "crimson",
-                  color: "white",
-                  marginLeft: "10px",
-                }}
-                onClick={() =>
-                  handleDelete(task.id)
-                }
-              >
-                Delete
-              </button>
-            </div>
-          ))}
+        <button
+          style={{ background: "crimson", color: "white", marginLeft: "10px", }}
+          onClick={() => handleDelete(task.id)}
+      > Delete
+        </button>
+      </div> ))}
       </div>
     </div>
   );

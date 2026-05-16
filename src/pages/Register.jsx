@@ -36,37 +36,17 @@ export default function Register() {
   return (
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>Create Account</h1>
-
-        <input
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-        />
-
-        <input
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-        />
-
-        <button type="submit">
-          Register
-        </button>
-
-        <button
-          type="button"
-          onClick={handleGoogleLogin}
-          className="google-btn"
-        >
-          Continue with Google
-        </button>
+      <h1>Create Account</h1>
+       <input type="email" placeholder="Enter email" value={email}
+       onChange={(e) => setEmail(e.target.value) }
+    />
+      <input type="password" placeholder="Enter password" value={password}
+       onChange={(e) => setPassword(e.target.value) }
+    />
+      <button type="submit">Register </button>
+      
+      <button type="button" onClick={handleGoogleLogin} className="google-btn"
+    >Continue with Google</button>
       </form>
     </div>
   );
