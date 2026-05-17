@@ -38,7 +38,7 @@ export default function AdminDashboard() {
   return (
     <div className="admin-container">
       <div className="admin-header">
-        <h1>🛠 Admin Dashboard</h1>
+        <h1>Admin Dashboard</h1>
         <p>Manage all user tasks and platform activity</p>
       </div>
 
