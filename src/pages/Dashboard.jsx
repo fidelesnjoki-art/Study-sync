@@ -8,26 +8,16 @@ export default function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!user?.email) return;
+  useEffect(() => {if (!user?.email) return;
+    const fetchTasks = async () => {setLoading(true);
 
-    const fetchTasks = async () => {
-      setLoading(true);
+    const q = query(collection(db, "tasks"),
+    where("userEmail", "==", user.email) );
 
-      const q = query(
-        collection(db, "tasks"),
-        where("userEmail", "==", user.email)
-      );
+    const snap = await getDocs(q);
 
-      const snap = await getDocs(q);
-
-      const data = snap.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setTasks(data);
-      setLoading(false);
+    const data = snap.docs.map((doc) => ({ id: doc.id, ...doc.data(), }));
+    setTasks(data); setLoading(false);
     };
 
     fetchTasks();
@@ -35,15 +25,13 @@ export default function Dashboard() {
   const completedTasks = tasks.filter((t) => t.completed);
   const pendingTasks = tasks.filter((t) => !t.completed);
 
-  const completionRate =
-    tasks.length === 0
-      ? 0
-      : Math.round((completedTasks.length / tasks.length) * 100);
+  const completionRate = tasks.length === 0 ? 0
+  : Math.round((completedTasks.length / tasks.length) * 100);
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>📊 Your Dashboard</h1>
+        <h1>Your Dashboard</h1>
         <p>Welcome back, let’s get things done today.</p>
       </div>
 
@@ -51,7 +39,6 @@ export default function Dashboard() {
         <p>Loading your tasks...</p>
       ) : (
         <>
-          {/* STATS GRID */}
           <div className="stats">
             <div className="card">
               <h2>Total Tasks</h2>

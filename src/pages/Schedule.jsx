@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from "react";
-import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, query, where, doc, } from "firebase/firestore";
+
 import { db } from "../firebase/firebase";
 import { useAuth } from "../auth/AuthContext";
 
@@ -15,23 +17,26 @@ export default function Schedule() {
   });
 
   const fetchSchedules = async () => {
+    if (!user?.email) return;
 
-  if (!user?.email) return;
+    const q = query(
+      collection(db, "schedules"),
+      where("userEmail", "==", user.email)
+    );
 
-  const q = query(
-    collection(db, "schedules"),
-    where("userEmail", "==", user.email)
-  );
+    const snap = await getDocs(q);
 
-  const snap = await getDocs(q);
+    const data = snap.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-  const data = snap.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+    setSchedules(data);
+  };
 
-  setSchedules(data);
-};
+  useEffect(() => {
+    fetchSchedules();
+  }, [user]);
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -45,7 +50,12 @@ export default function Schedule() {
       userEmail: user.email,
     });
 
-    setForm({ subject: "", day: "", time: "" });
+    setForm({
+      subject: "",
+      day: "",
+      time: "",
+    });
+
     fetchSchedules();
   };
 
@@ -62,19 +72,25 @@ export default function Schedule() {
         <input
           placeholder="Subject"
           value={form.subject}
-          onChange={(e) => setForm({ ...form, subject: e.target.value })}
+          onChange={(e) =>
+            setForm({ ...form, subject: e.target.value })
+          }
         />
 
         <input
           placeholder="Day"
           value={form.day}
-          onChange={(e) => setForm({ ...form, day: e.target.value })}
+          onChange={(e) =>
+            setForm({ ...form, day: e.target.value })
+          }
         />
 
         <input
-          placeholder="Time "
+          placeholder="Time"
           value={form.time}
-          onChange={(e) => setForm({ ...form, time: e.target.value })}
+          onChange={(e) =>
+            setForm({ ...form, time: e.target.value })
+          }
         />
 
         <button type="submit">Add Schedule</button>
@@ -84,8 +100,8 @@ export default function Schedule() {
         {schedules.map((s) => (
           <div className="schedule-card" key={s.id}>
             <h3>{s.subject}</h3>
-            <p> {s.day}</p>
-            <p> {s.time}</p>
+            <p>{s.day}</p>
+            <p>{s.time}</p>
 
             <button onClick={() => handleDelete(s.id)}>
               Delete

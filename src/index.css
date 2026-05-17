@@ -12,10 +12,6 @@ body{
   color:#01091b;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-
 .navbar{
   width:100%;
   display:flex;
@@ -71,9 +67,6 @@ body{
   background:#dc2626;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
 
 .hero-section{
   min-height:90vh;
@@ -130,9 +123,6 @@ body{
   flex-wrap:wrap;
 }
 
-/* =========================
-   BUTTONS
-========================= */
 
 button{
   border:none;
@@ -162,6 +152,26 @@ button{
 
 .secondary-btn:hover{
   background:#e2e8f0;
+}
+.hero-banner {
+  background: #f0f4ff;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #334155;
+}
+
+.feature-tip {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.hero-note, .cta-message {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 8px;
 }
 
 /* =========================
@@ -212,9 +222,6 @@ button{
   line-height:1.7;
 }
 
-/* =========================
-   CTA
-========================= */
 
 .cta{
   padding:80px 20px;
@@ -231,11 +238,6 @@ button{
   color:#64748b;
 }
 
-/* =========================
-   AUTH
-========================= */
-
-/* AUTH PAGE */
 
 .auth-container {
   min-height: 100vh;
@@ -249,8 +251,6 @@ button{
   );
   padding: 20px;
 }
-
-/* FORM */
 
 .auth-form {
   width: 100%;
@@ -687,8 +687,6 @@ button{
   transform: translateY(-2px);
 }
 
-/* GRID */
-
 .schedule-grid {
   margin-top: 40px;
 
@@ -699,10 +697,9 @@ button{
   gap: 20px;
 }
 
-/* CARD */
-
 .schedule-card {
   background: rgba(246, 242, 242, 0.962);
+  color: #000101;
 
   padding: 20px;
 

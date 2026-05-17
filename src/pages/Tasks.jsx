@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 
-import {
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
-  updateDoc,
-  query,
-} from "firebase/firestore";
+import {collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where} from "firebase/firestore";
 
 import { db } from "../firebase/firebase";
 import { useAuth } from "../auth/AuthContext";
@@ -128,7 +120,7 @@ export default function Tasks() {
 
       <input
         type="text"
-        placeholder="🔍 Search tasks..."
+        placeholder=" Search tasks..."
         className="search-bar"
         value={search}
         onChange={(e) =>

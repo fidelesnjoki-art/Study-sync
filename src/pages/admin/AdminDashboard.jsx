@@ -42,7 +42,6 @@ export default function AdminDashboard() {
         <p>Manage all user tasks and platform activity</p>
       </div>
 
-      {/* STATS */}
       <div className="admin-stats">
         <div className="admin-card">
           <h3>Total Tasks</h3>
@@ -55,7 +54,6 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* CONTENT */}
       {loading ? (
         <p>Loading tasks...</p>
       ) : (
