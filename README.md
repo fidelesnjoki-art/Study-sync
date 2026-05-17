@@ -1,4 +1,5 @@
-# StudySync-Student Dashboard
+# StudySync-Student Dashboard 
+- Live Link https://studysync-55a19.web.app/
 
 ## Description
 StudySync is a responsive web application designed to help students manage academic tasks and improve productivity. The platform provides a centralized dashboard where users can organize study activities, track tasks, and manage schedules efficiently.
