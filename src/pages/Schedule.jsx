@@ -15,19 +15,23 @@ export default function Schedule() {
   });
 
   const fetchSchedules = async () => {
-    const snap = await getDocs(collection(db, "schedules"));
 
-    const data = snap.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+  if (!user?.email) return;
 
-    setSchedules(data.filter((s) => s.userEmail === user.email));
-  };
+  const q = query(
+    collection(db, "schedules"),
+    where("userEmail", "==", user.email)
+  );
 
-  useEffect(() => {
-    fetchSchedules();
-  }, []);
+  const snap = await getDocs(q);
+
+  const data = snap.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  setSchedules(data);
+};
 
   const handleAdd = async (e) => {
     e.preventDefault();

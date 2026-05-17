@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 
 export default function Register() {
-  const { register, loginWithGoogle } = useAuth();
+  const { register, googleLogin } = useAuth();
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function Register() {
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle();
+      await googleLogin ();
 
       navigate("/dashboard");
     } catch (error) {
