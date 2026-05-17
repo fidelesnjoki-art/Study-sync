@@ -5,7 +5,7 @@ StudySync is a responsive web application designed to help students manage acade
 
 ## What It Does
 
-Students use multiple tools for tasks, calendars, and notes, which makes staying organized hard. StudySync solves this by giving students a simple, tailored productivity dashboard for managing study activities across devices.
+Students use multiple tools for tasks, calendars, and notes, which makes staying organized hard. StudySync solves this by providing students with a simple, tailored productivity dashboard to manage study activities across devices.
 
 ## Features
 
@@ -58,14 +58,14 @@ Students use multiple tools for tasks, calendars, and notes, which makes staying
 
 ### Installation
 
-1. Clone the repo-git clone git@github.com:fidelesnjoki-art/Study-sync.git
-2. Install the dependencies  **npm install**
-3. Set up firebase
-4. Run the app **npm run dev**
+1. Clone the repo: git clone git@github.com:fidelesnjoki-art/Study-sync.git
+2. Install the dependencies  ###npm install
+3. Set up Firebase
+4. Run the app ###npm run dev
 
 ### Usage
 
-1. Sign up or log in with email or Google
+1. Sign up or log in with your email or Google
 2. Create tasks and set deadlines from the dashboard
 3. Mark tasks complete and track your progress
 4. Access your data from any device
@@ -75,11 +75,10 @@ npm run test
 
 ## Deployment
 Github Actions  
-Live demo: [add link here]
 
 ### Contributing
 
 1. Fork the repo
 3. Commit changes: `git commit -m 'Add YourFeature'`
-4. Push to branch: `git push origin feature/YourFeature`
+4. Push to branch: `git push origin feature/YourFeature.`
 5. Open a Pull Request
