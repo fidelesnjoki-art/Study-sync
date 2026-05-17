@@ -59,9 +59,9 @@ Students use multiple tools for tasks, calendars, and notes, which makes staying
 ### Installation
 
 1. Clone the repo-git clone git@github.com:fidelesnjoki-art/Study-sync.git
-2. Install the dependencies  **npm install **
+2. Install the dependencies  **npm install**
 3. Set up firebase
-4. Run the app ** npm run dev
+4. Run the app **npm run dev**
 
 ### Usage
 
