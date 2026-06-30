@@ -1,26 +1,34 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
+import { useToast } from "./Toast";
 
 export default function Navbar() {
-
   const { user, logout, isAdmin } = useAuth();
-
   const location = useLocation();
+  const toast = useToast();
 
-  const isActive = (path) =>
-    location.pathname === path;
+  const isActive = (path) => location.pathname === path;
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success("Successfully Logged Out", "See you again soon for your next study session!");
+    } catch (error) {
+      toast.error("Logout Failed", error.message);
+    }
+  };
 
   return (
     <nav className="navbar">
-
       {/* LOGO */}
       <div className="nav-logo">
-        <Link to="/">StudySync</Link>
+        <Link to="/">
+          <span>⚡ StudySync</span>
+        </Link>
       </div>
 
       {/* LINKS */}
       <div className="nav-links">
-
         <Link
           className={isActive("/") ? "active" : ""}
           to="/"
@@ -69,6 +77,13 @@ export default function Navbar() {
               Tasks
             </Link>
 
+            <Link
+              className={isActive("/timer") ? "active" : ""}
+              to="/timer"
+            >
+              Pomodoro
+            </Link>
+
             {isAdmin && (
               <Link
                 className={isActive("/admin") ? "active" : ""}
@@ -78,16 +93,21 @@ export default function Navbar() {
               </Link>
             )}
 
+            {/* Profile chip */}
+            <div className="user-profile-chip" title={user.email}>
+              <span className="user-avatar-dot"></span>
+              <span>{user.email.split("@")[0]}</span>
+            </div>
+
             <button
               className="logout-btn"
-              onClick={logout}
+              onClick={handleLogout}
             >
               Logout
             </button>
           </>
         )}
       </div>
-
     </nav>
   );
 }
